@@ -1,4 +1,6 @@
 {
+  "extends": "@ignite-ui/ts-config/react.json",
+
   "compilerOptions": {
     "target": "ES2020",
     "useDefineForClassFields": true,

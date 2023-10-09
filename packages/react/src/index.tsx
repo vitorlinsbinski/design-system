@@ -1,6 +1,8 @@
-import { ComponentProps } from "react";
+import { ComponentProps, ElementType } from "react";
 
 import { styled } from "./styles";
+
+import { VariantProps } from "@stitches/react";
 
 export const Button = styled("button", {
   fontFamily: "$default",
