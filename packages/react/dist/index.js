@@ -64,6 +64,7 @@ __export(src_exports, {
   Button: () => Button,
   Checkbox: () => Checkbox2,
   Heading: () => Heading,
+  MultiStep: () => MultiStep,
   Text: () => Text,
   TextArea: () => TextArea,
   TextInput: () => TextInput
@@ -476,6 +477,70 @@ var import_jsx_runtime3 = require("react/jsx-runtime");
 function Checkbox2(props) {
   return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(CheckboxContainer, __spreadProps(__spreadValues({}, props), { children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(CheckboxIndicator, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(import_phosphor_react2.Check, { weight: "bold" }) }) }));
 }
+
+// src/components/MultiStep/styles.ts
+var MultiStepContainer = styled("div", {});
+var Label = styled(Text, {
+  color: "$gray200",
+  defaultVariants: {
+    size: "xs"
+  }
+});
+var Steps = styled("div", {
+  display: "grid",
+  gap: "$2",
+  marginTop: "$1",
+  gridTemplateColumns: "repeat(var(--steps-size),1fr)"
+});
+var Step = styled("div", {
+  height: "$1",
+  borderRadius: "$px",
+  backgroundColor: "$gray600",
+  transition: "all 0.4s"
+});
+var StepDone = styled("div", {
+  height: "$1",
+  borderRadius: "$px",
+  backgroundColor: "$gray600",
+  width: "0%",
+  transition: "width .6s ease-out",
+  variants: {
+    active: {
+      true: {
+        width: "100%",
+        backgroundColor: "$gray100"
+      }
+    },
+    reverse: {
+      true: {
+        width: "0%",
+        backgroundColor: "$gray100"
+      }
+    }
+  }
+});
+
+// src/components/MultiStep/index.tsx
+var import_jsx_runtime4 = require("react/jsx-runtime");
+function MultiStep({ size, currentStep = 1 }) {
+  return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(MultiStepContainer, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(Label, { children: [
+      "Passo ",
+      currentStep,
+      " de ",
+      size
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Steps, { css: { "--steps-size": size }, children: Array.from({ length: size }, (_, i) => i + 1).map((step) => {
+      return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Step, { children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+        StepDone,
+        {
+          active: currentStep >= step,
+          reverse: currentStep < step
+        }
+      ) }, step);
+    }) })
+  ] });
+}
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Avatar,
@@ -483,6 +548,7 @@ function Checkbox2(props) {
   Button,
   Checkbox,
   Heading,
+  MultiStep,
   Text,
   TextArea,
   TextInput
