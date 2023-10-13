@@ -11,6 +11,14 @@ export default {
     src: "https://github.com/vitorlinsbinski.png",
     alt: "Vitor Linsbinski",
   },
+
+  argTypes: {
+    src: {
+      control: {
+        type: "text",
+      },
+    },
+  },
 } as Meta<AvatarProps>;
 
 export const Primary: StoryObj<AvatarProps> = {};
