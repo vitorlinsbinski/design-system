@@ -1,5 +1,5 @@
 {
-  "name": "@ignite-ui/docs",
+  "name": "@vitor-ignite-ui/docs",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -14,9 +14,9 @@
     "build": "storybook build"
   },
   "dependencies": {
-    "@ignite-ui/react": "*",
-    "@ignite-ui/tokens": "*",
-    "@ignite-ui/ts-config": "*",
+    "@vitor-ignite-ui/react": "*",
+    "@vitor-ignite-ui/tokens": "*",
+    "@vitor-ignite-ui/ts-config": "*",
     "@storybook/addon-a11y": "^7.4.6",
     "phosphor-react": "^1.4.1",
     "polished": "^4.2.2",
