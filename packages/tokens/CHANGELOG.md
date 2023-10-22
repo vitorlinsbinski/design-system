@@ -1,5 +1,15 @@
 # @vitor-ignite-ui/tokens
 
+## 3.0.0
+
+### Major Changes
+
+- Toast and Tooltip components added
+
+### Minor Changes
+
+- Toast and Tooltip components
+
 ## 2.1.0
 
 ### Minor Changes
