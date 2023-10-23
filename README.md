@@ -14,7 +14,7 @@
 </div>
 
 <h4 align="center"> 
-	Storybook: Design System| Status: Done ✔️
+	Storybook: Design System | Status: Done ✔️
 </h4>
 
 ## Table of Contents
@@ -42,7 +42,7 @@ On the Storybook page, you can browse the components created in ReactJS. Each co
 
 ```bash
     # Clone this repository on your machine:
-    $ git clone https://github.com/vitorlinsbinski/ignite-shop.git
+    $ git clone https://github.com/vitorlinsbinski/design-system.git
 
     # Access the project folder in your terminal:
     $ cd design-system
