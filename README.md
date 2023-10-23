@@ -3,7 +3,7 @@
 </div>
 
 <h1 align = "center">Storybook: Design System</h1>
-<p>This project is a challenge of Ignite Course, by Rocketseat. The porpouse of this is to develop new components to "Ignite Call" interface and publish them to Storybook and NPM packages. A Design System is a set of standard components that can be used in a variety of User Interfaces that have repeated components, like Boxes, Buttons, Headings, Texts, Text Inputs, and others.</p>
+<p>This project is a challenge of the Ignite course, by Rocketseat. This aims to develop new components to the "Ignite Call" interface and publish them to Storybook and NPM packages. A Design System is a set of standard components used in various User Interfaces, like repeated components, like Boxes, Buttons, Headings, Texts, Text Inputs, and others.</p>
 
 <div align="center">
   <div style="display: flex; justify-content: space-between; align-items: center;">
