@@ -1,24 +1,37 @@
 import { ComponentProps, ElementType } from "react";
-import { ToastContainer } from "./styles";
+import { ToastClose, ToastRoot, ToastViewport } from "./styles";
 import { Heading } from "../Heading";
 import { Text } from "../Text";
 import { X } from "phosphor-react";
 
-export function Toast({ children }: ToastProps) {
+import * as ToastRadix from "@radix-ui/react-toast";
+
+export function Toast({ title, description, open, ...props }: ToastProps) {
   return (
-    <ToastContainer>
-      <Heading size={"sm"}>Agendamento realizado</Heading>
+    <ToastRadix.Provider swipeDirection="right">
+      <ToastRoot open={open} {...props}>
+        <ToastRadix.Title>
+          <Heading size={"sm"}>{title}</Heading>
+        </ToastRadix.Title>
 
-      <Text size={"sm"}>{children}</Text>
+        <ToastRadix.Description>
+          <Text size={"sm"}>{description}</Text>
+        </ToastRadix.Description>
 
-      <X size={20} />
-    </ToastContainer>
+        <ToastClose asChild>
+          <X size={20} />
+        </ToastClose>
+      </ToastRoot>
+
+      <ToastViewport />
+    </ToastRadix.Provider>
   );
 }
 
-export interface ToastProps extends ComponentProps<typeof ToastContainer> {
-  as?: ElementType;
-  children: string;
+export interface ToastProps extends ComponentProps<typeof ToastRoot> {
+  title: string;
+  description: string;
+  open: boolean;
 }
 
 Toast.displayName = "Toast";

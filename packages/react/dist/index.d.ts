@@ -5,6 +5,7 @@ import { ComponentProps, ElementType } from 'react';
 import * as react_jsx_runtime from 'react/jsx-runtime';
 import * as Avatar$1 from '@radix-ui/react-avatar';
 import * as Checkbox$1 from '@radix-ui/react-checkbox';
+import * as Toast$1 from '@radix-ui/react-toast';
 import * as TooltipRadix from '@radix-ui/react-tooltip';
 import * as _stitches_react_types_css from '@stitches/react/types/css';
 import * as _stitches_react_types_stitches from '@stitches/react/types/stitches';
@@ -1691,7 +1692,7 @@ interface MultiStepProps {
     currentStep?: number;
 }
 
-declare const ToastContainer: _stitches_react_types_styled_component.StyledComponent<"div", {}, {}, _stitches_react_types_css_util.CSS<{}, {
+declare const ToastRoot: _stitches_react_types_styled_component.StyledComponent<react.ForwardRefExoticComponent<Toast$1.ToastProps & react.RefAttributes<HTMLLIElement>>, {}, {}, _stitches_react_types_css_util.CSS<{}, {
     colors: {
         white: string;
         black: string;
@@ -1895,13 +1896,14 @@ declare const ToastContainer: _stitches_react_types_styled_component.StyledCompo
     zIndex: "zIndices";
 }, {}>>;
 
-declare function Toast({ children }: ToastProps): react_jsx_runtime.JSX.Element;
+declare function Toast({ title, description, open, ...props }: ToastProps): react_jsx_runtime.JSX.Element;
 declare namespace Toast {
     var displayName: string;
 }
-interface ToastProps extends ComponentProps<typeof ToastContainer> {
-    as?: ElementType;
-    children: string;
+interface ToastProps extends ComponentProps<typeof ToastRoot> {
+    title: string;
+    description: string;
+    open: boolean;
 }
 
 declare function Tooltip({ children, text }: TooltipProps): react_jsx_runtime.JSX.Element;

@@ -533,7 +533,16 @@ function MultiStep({ size, currentStep = 1 }) {
 MultiStep.displayName = "MultiStep";
 
 // src/components/Toast/styles.ts
-var ToastContainer = styled("div", {
+import * as Toast from "@radix-ui/react-toast";
+var slideIn2 = keyframes({
+  from: { transform: `translateX(calc(100% + 25px))` },
+  to: { transform: "translateX(0)" }
+});
+var hide = keyframes({
+  "0%": { opacity: 1 },
+  "100%": { opacity: 0 }
+});
+var ToastRoot = styled(Toast.Root, {
   width: "100%",
   maxWidth: "22.5rem",
   padding: "$3 0 $3 $5",
@@ -547,26 +556,52 @@ var ToastContainer = styled("div", {
   p: {
     color: "$gray200"
   },
-  svg: {
-    color: "$gray200",
-    position: "absolute",
-    top: "$4",
-    right: "$4",
-    cursor: "pointer"
+  '&[data-state="open"]': {
+    animation: `${slideIn2} 150ms cubic-bezier(0.16, 1, 0.3, 1)`
+  },
+  '&[data-state="closed"]': {
+    animation: `${hide} 100ms ease-in`
   }
+});
+var ToastClose = styled(Toast.Close, {
+  position: "absolute",
+  color: "$gray200",
+  top: "$4",
+  right: "$4",
+  cursor: "pointer"
+});
+var ToastViewport = styled(Toast.Viewport, {
+  position: "fixed",
+  bottom: 0,
+  right: 0,
+  display: "flex",
+  flexDirection: "column",
+  padding: 25,
+  gap: 10,
+  width: 390,
+  maxWidth: "100vw",
+  margin: 0,
+  listStyle: "none",
+  zIndex: 2147483647,
+  outline: "none"
 });
 
 // src/components/Toast/index.tsx
 import { X } from "phosphor-react";
+import * as ToastRadix from "@radix-ui/react-toast";
 import { jsx as jsx5, jsxs as jsxs4 } from "react/jsx-runtime";
-function Toast({ children }) {
-  return /* @__PURE__ */ jsxs4(ToastContainer, { children: [
-    /* @__PURE__ */ jsx5(Heading, { size: "sm", children: "Agendamento realizado" }),
-    /* @__PURE__ */ jsx5(Text, { size: "sm", children }),
-    /* @__PURE__ */ jsx5(X, { size: 20 })
+function Toast2(_a) {
+  var _b = _a, { title, description, open } = _b, props = __objRest(_b, ["title", "description", "open"]);
+  return /* @__PURE__ */ jsxs4(ToastRadix.Provider, { swipeDirection: "right", children: [
+    /* @__PURE__ */ jsxs4(ToastRoot, __spreadProps(__spreadValues({ open }, props), { children: [
+      /* @__PURE__ */ jsx5(ToastRadix.Title, { children: /* @__PURE__ */ jsx5(Heading, { size: "sm", children: title }) }),
+      /* @__PURE__ */ jsx5(ToastRadix.Description, { children: /* @__PURE__ */ jsx5(Text, { size: "sm", children: description }) }),
+      /* @__PURE__ */ jsx5(ToastClose, { asChild: true, children: /* @__PURE__ */ jsx5(X, { size: 20 }) })
+    ] })),
+    /* @__PURE__ */ jsx5(ToastViewport, {})
   ] });
 }
-Toast.displayName = "Toast";
+Toast2.displayName = "Toast";
 
 // src/components/Tooltip/styles.ts
 import * as Tooltip from "@radix-ui/react-tooltip";
@@ -631,7 +666,7 @@ export {
   Text,
   TextArea,
   TextInput,
-  Toast,
+  Toast2 as Toast,
   Tooltip2 as Tooltip,
   config,
   createTheme,

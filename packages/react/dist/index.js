@@ -68,7 +68,7 @@ __export(src_exports, {
   Text: () => Text,
   TextArea: () => TextArea,
   TextInput: () => TextInput,
-  Toast: () => Toast,
+  Toast: () => Toast2,
   Tooltip: () => Tooltip2,
   config: () => config,
   createTheme: () => createTheme,
@@ -583,7 +583,16 @@ function MultiStep({ size, currentStep = 1 }) {
 MultiStep.displayName = "MultiStep";
 
 // src/components/Toast/styles.ts
-var ToastContainer = styled("div", {
+var Toast = __toESM(require("@radix-ui/react-toast"));
+var slideIn2 = keyframes({
+  from: { transform: `translateX(calc(100% + 25px))` },
+  to: { transform: "translateX(0)" }
+});
+var hide = keyframes({
+  "0%": { opacity: 1 },
+  "100%": { opacity: 0 }
+});
+var ToastRoot = styled(Toast.Root, {
   width: "100%",
   maxWidth: "22.5rem",
   padding: "$3 0 $3 $5",
@@ -597,26 +606,52 @@ var ToastContainer = styled("div", {
   p: {
     color: "$gray200"
   },
-  svg: {
-    color: "$gray200",
-    position: "absolute",
-    top: "$4",
-    right: "$4",
-    cursor: "pointer"
+  '&[data-state="open"]': {
+    animation: `${slideIn2} 150ms cubic-bezier(0.16, 1, 0.3, 1)`
+  },
+  '&[data-state="closed"]': {
+    animation: `${hide} 100ms ease-in`
   }
+});
+var ToastClose = styled(Toast.Close, {
+  position: "absolute",
+  color: "$gray200",
+  top: "$4",
+  right: "$4",
+  cursor: "pointer"
+});
+var ToastViewport = styled(Toast.Viewport, {
+  position: "fixed",
+  bottom: 0,
+  right: 0,
+  display: "flex",
+  flexDirection: "column",
+  padding: 25,
+  gap: 10,
+  width: 390,
+  maxWidth: "100vw",
+  margin: 0,
+  listStyle: "none",
+  zIndex: 2147483647,
+  outline: "none"
 });
 
 // src/components/Toast/index.tsx
 var import_phosphor_react3 = require("phosphor-react");
+var ToastRadix = __toESM(require("@radix-ui/react-toast"));
 var import_jsx_runtime5 = require("react/jsx-runtime");
-function Toast({ children }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(ToastContainer, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Heading, { size: "sm", children: "Agendamento realizado" }),
-    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Text, { size: "sm", children }),
-    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(import_phosphor_react3.X, { size: 20 })
+function Toast2(_a) {
+  var _b = _a, { title, description, open } = _b, props = __objRest(_b, ["title", "description", "open"]);
+  return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(ToastRadix.Provider, { swipeDirection: "right", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(ToastRoot, __spreadProps(__spreadValues({ open }, props), { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(ToastRadix.Title, { children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Heading, { size: "sm", children: title }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(ToastRadix.Description, { children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Text, { size: "sm", children: description }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(ToastClose, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(import_phosphor_react3.X, { size: 20 }) })
+    ] })),
+    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(ToastViewport, {})
   ] });
 }
-Toast.displayName = "Toast";
+Toast2.displayName = "Toast";
 
 // src/components/Tooltip/styles.ts
 var Tooltip = __toESM(require("@radix-ui/react-tooltip"));
