@@ -12,11 +12,13 @@ export default {
   },
 
   args: {
-    children: <Button variant={"tertiary"}>26</Button>,
-    text: "26 de Outubro - Disponível",
+    date: new Date(),
+    available: true,
   },
 } as Meta<TooltipProps>;
 
 export const Primary: StoryObj<TooltipProps> = {
-  args: {},
+  args: {
+    children: <Button variant={"tertiary"}>26</Button>,
+  },
 };

@@ -21,6 +21,7 @@ export const Content = styled(Tooltip.Content, {
   borderRadius: "$md",
   margin: "2px 0",
   position: "relative",
+  boxShadow: "4px 16px 24px 0px rgba(0, 0, 0, 0.25)",
 
   span: {
     fontFamily: "Inter, sans-serif",
@@ -38,6 +39,7 @@ export const Content = styled(Tooltip.Content, {
     bottom: "-20px",
     left: "97px",
     position: "absolute",
+    boxShadow: "4px 16px 24px 0px rgba(0, 0, 0, 0.25)",
   },
 
   animationDuration: "200ms",

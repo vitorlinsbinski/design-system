@@ -621,6 +621,7 @@ var Content2 = styled(Tooltip.Content, {
   borderRadius: "$md",
   margin: "2px 0",
   position: "relative",
+  boxShadow: "4px 16px 24px 0px rgba(0, 0, 0, 0.25)",
   span: {
     fontFamily: "Inter, sans-serif",
     fontSize: "$sm",
@@ -635,7 +636,8 @@ var Content2 = styled(Tooltip.Content, {
     transform: "rotate(270deg)",
     bottom: "-20px",
     left: "97px",
-    position: "absolute"
+    position: "absolute",
+    boxShadow: "4px 16px 24px 0px rgba(0, 0, 0, 0.25)"
   },
   animationDuration: "200ms",
   '&[data-state="delayed-open"]': {
@@ -649,10 +651,18 @@ var Content2 = styled(Tooltip.Content, {
 // src/components/Tooltip/index.tsx
 import * as TooltipRadix from "@radix-ui/react-tooltip";
 import { jsx as jsx6, jsxs as jsxs5 } from "react/jsx-runtime";
-function Tooltip2({ children, text }) {
+function Tooltip2({ children, date, available }) {
+  const formattedDate = new Intl.DateTimeFormat("pt-br", {
+    day: "numeric",
+    month: "long"
+  }).format(date).toString();
   return /* @__PURE__ */ jsx6(TooltipRadix.Provider, { delayDuration: 100, children: /* @__PURE__ */ jsxs5(TooltipRadix.Root, { children: [
     /* @__PURE__ */ jsx6(TooltipRadix.Trigger, { asChild: true, children }),
-    /* @__PURE__ */ jsx6(Portal2, { children: /* @__PURE__ */ jsx6(Content2, { children: /* @__PURE__ */ jsx6("span", { children: text }) }) })
+    /* @__PURE__ */ jsx6(Portal2, { children: /* @__PURE__ */ jsx6(Content2, { children: /* @__PURE__ */ jsxs5("span", { children: [
+      formattedDate,
+      " - ",
+      available ? "Dispon\xEDvel" : "Indispon\xEDvel"
+    ] }) }) })
   ] }) });
 }
 Tooltip2.displayName = "Tooltip";

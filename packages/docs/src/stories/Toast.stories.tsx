@@ -1,6 +1,6 @@
 import type { StoryObj, Meta } from "@storybook/react";
 
-import { Box, Button, Toast, ToastProps } from "@vitor-ignite-ui/react";
+import { Button, Toast, ToastProps } from "@vitor-ignite-ui/react";
 import { useState } from "react";
 
 export default {
@@ -25,7 +25,7 @@ export const Demo: StoryObj<ToastProps> = {
     (Story) => {
       const [open, setOpen] = useState(false);
       return (
-        <Box css={{ display: "flex", flexDirection: "column", gap: "$2" }}>
+        <>
           <Button onClick={() => setOpen((state) => !state)}>
             Confirm date
           </Button>
@@ -37,7 +37,7 @@ export const Demo: StoryObj<ToastProps> = {
               onOpenChange: setOpen,
             },
           })}
-        </Box>
+        </>
       );
     },
   ],

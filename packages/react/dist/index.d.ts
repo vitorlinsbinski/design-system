@@ -1,7 +1,7 @@
 import * as _stitches_react_types_styled_component from '@stitches/react/types/styled-component';
 import * as _stitches_react_types_css_util from '@stitches/react/types/css-util';
 import * as react from 'react';
-import { ComponentProps, ElementType } from 'react';
+import { ComponentProps, ElementType, ReactNode } from 'react';
 import * as react_jsx_runtime from 'react/jsx-runtime';
 import * as Avatar$1 from '@radix-ui/react-avatar';
 import * as Checkbox$1 from '@radix-ui/react-checkbox';
@@ -1906,12 +1906,14 @@ interface ToastProps extends ComponentProps<typeof ToastRoot> {
     open: boolean;
 }
 
-declare function Tooltip({ children, text }: TooltipProps): react_jsx_runtime.JSX.Element;
+declare function Tooltip({ children, date, available }: TooltipProps): react_jsx_runtime.JSX.Element;
 declare namespace Tooltip {
     var displayName: string;
 }
 interface TooltipProps extends ComponentProps<typeof TooltipRadix.Root> {
-    text: string;
+    children?: ReactNode;
+    date: Date;
+    available: boolean;
 }
 
 declare const styled: <Type extends _stitches_react_types_util.Function | keyof JSX.IntrinsicElements | react.ComponentType<any>, Composers extends (string | _stitches_react_types_util.Function | react.ComponentType<any> | {
