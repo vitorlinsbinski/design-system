@@ -7,11 +7,9 @@
 
 <div align="center">
   <div style="display: flex; justify-content: space-between; align-items: center;">
-
+    <img src="https://img.shields.io/static/v1?label=Storybook&message=v7.4.6&color=blue&style=plastic&logo="/>
     <img src="https://img.shields.io/static/v1?label=ReactJS&message=v18.2.0&color=blue&style=plastic&logo="/>
     <img src="https://img.shields.io/static/v1?label=TypeScript&message=v5.2.2&color=blue&style=plastic&logo="/>
-    <img src="https://img.shields.io/static/v1?label=Storybook&message=v7.4.6&color=blue&style=plastic&logo="/>
-
   </div>
 </div>
 
